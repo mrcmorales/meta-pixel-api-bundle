@@ -1,0 +1,12 @@
+{
+  "bundles": {
+    "MrcMorales\\MetaPixelApiBundle\\MetaPixelApiBundle": ["all"]
+  },
+  "copy-from-recipe": {
+    "config/": "%CONFIG_DIR%/"
+  },
+  "env": {
+    "META_PIXEL_ID": "put-your-pixel-id-here",
+    "META_ACCESS_TOKEN": "put-your-access-token-here"
+  }
+}

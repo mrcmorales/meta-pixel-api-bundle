@@ -1,0 +1,56 @@
+{
+  "name": "mrcmorales/meta-pixel-api-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony bundle for integrating Meta (Facebook) Pixel Conversions API — send server-side events like purchases, leads or page views directly to Meta.",
+  "keywords": [
+    "meta",
+    "facebook",
+    "pixel",
+    "conversions api",
+    "meta pixel api",
+    "facebook conversions api",
+    "server side tracking",
+    "meta ads",
+    "marketing",
+    "analytics"
+  ],
+  "homepage": "https://github.com/mrcmorales/meta-pixel-api-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marc Morales Valldepérez",
+      "email": "marcmorales83@gmail.com",
+      "homepage": "https://github.com/mrcmorales"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "facebook/php-business-sdk": "^15.0",
+    "symfony/config": "^6.0 || ^7.0",
+    "symfony/dependency-injection": "^6.0 || ^7.0",
+    "symfony/http-kernel": "^6.0 || ^7.0",
+    "symfony/messenger": "^7.3",
+    "symfony/monolog-bundle": "^3.10"
+  },
+  "suggest": {
+    "symfony/messenger": "Allows sending events asynchronously using Symfony Messenger."
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-1.x": "1.x-dev"
+    },
+    "symfony": {
+      "id": "mrcmorales/meta-pixel-api-bundle",
+      "allow-contrib": true,
+      "recipe": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "MrcMorales\\MetaPixelApiBundle\\": "src"
+    }
+  }
+}

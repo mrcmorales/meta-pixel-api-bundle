@@ -15,9 +15,6 @@ final class MetaPixelEventHandler
 
     public function __invoke(MetaPixelEvent $message): void
     {
-        var_dump('entra 123');
-      $result =   $this->manager->execute($message->event);
-
-      var_dump($result->getEventsReceived());
+      $this->manager->execute($message->event);
     }
 }

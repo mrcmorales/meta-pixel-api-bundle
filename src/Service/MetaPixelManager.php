@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MrcMorales\MetaPixelApiBundle\Service;
 
+use Exception;
 use FacebookAds\Api;
 use FacebookAds\Object\ServerSide\EventRequest;
 use FacebookAds\Object\ServerSide\EventResponse;
@@ -72,7 +73,7 @@ final class MetaPixelManager implements MetaPixelInterface
             ]);
 
             return $result;
-        } catch (\Throwable $e) {
+        } catch (Exception $e) {
 
             $this->logger?->error('Sending Meta Pixel Event ', [
                 'event_name' => $facebookEvent->getEventName(),

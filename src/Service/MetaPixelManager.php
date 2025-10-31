@@ -75,9 +75,8 @@ final class MetaPixelManager implements MetaPixelInterface
             $this->logger?->info('Sent  ', [
                 'fb_Trace_id' => $result->getFbTraceId(),
                 'events_received' => $result->getEventsReceived(),
+                'data'=>$facebookEvent->getCustomData()->normalize(),
                 'messages' => $result->getMessages(),
-                'json' =>     $facebookEvent->__toString()
-
             ]);
 
             return $result;

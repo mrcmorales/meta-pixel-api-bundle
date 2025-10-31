@@ -57,7 +57,7 @@ final class MetaPixelManager implements MetaPixelInterface
     {
         $facebookEvent = $event->toEvent();
 
-        $this->logger?->info('Sending Meta Pixel Event  ', [
+        $this->logger?->info('Sending', [
             'event_id' => $facebookEvent->getEventId(),
             'event_name' => $facebookEvent->getEventName(),
             'action_source' => $facebookEvent->getActionSource(),
@@ -72,7 +72,7 @@ final class MetaPixelManager implements MetaPixelInterface
         try {
             $result = $request->execute();
 
-            $this->logger?->info('Sent  ', [
+            $this->logger?->info('Sent', [
                 'fb_Trace_id' => $result->getFbTraceId(),
                 'events_received' => $result->getEventsReceived(),
                 'messages' => $result->getMessages(),
@@ -81,7 +81,7 @@ final class MetaPixelManager implements MetaPixelInterface
             return $result;
         } catch (Exception $e) {
 
-            $this->logger?->error('Error Sending Meta Pixel Event ', [
+            $this->logger?->error('Error', [
                 'event_id' => $facebookEvent->getEventId(),
                 'event_name' => $facebookEvent->getEventName(),
                 'action_source' => $facebookEvent->getActionSource(),

@@ -27,6 +27,11 @@ final class MetaPixelManager implements MetaPixelInterface
         Api::init(null, null, $this->accessToken);
     }
 
+    public function getPixelId(): string
+    {
+        return $this->pixelId;
+    }
+
     public function setCredentials(string $pixelId, ?string $accessToken = null): self
     {
         $this->pixelId = $pixelId;
@@ -52,6 +57,7 @@ final class MetaPixelManager implements MetaPixelInterface
     {
         $facebookEvent = $event->toEvent();
 
+
         $this->logger?->info('Sending  ', [
             'event_name' => $facebookEvent->getEventName(),
             'event_id' => $facebookEvent->getEventId(),
@@ -70,6 +76,8 @@ final class MetaPixelManager implements MetaPixelInterface
                 'fb_Trace_id' => $result->getFbTraceId(),
                 'events_received' => $result->getEventsReceived(),
                 'messages' => $result->getMessages(),
+                'json' =>     $facebookEvent->__toString()
+
             ]);
 
             return $result;

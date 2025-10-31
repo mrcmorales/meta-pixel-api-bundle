@@ -62,7 +62,7 @@ final class MetaPixelManager implements MetaPixelInterface
             'event_name' => $facebookEvent->getEventName(),
             'action_source' => $facebookEvent->getActionSource(),
             'event_source_url' => $facebookEvent->getEventSourceUrl(),
-            'custom_data'=>$facebookEvent->getCustomData()->normalize(),
+            'custom_data'=>$facebookEvent->getCustomData()?->normalize(),
         ]);
 
 

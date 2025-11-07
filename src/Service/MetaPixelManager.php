@@ -15,28 +15,15 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class MetaPixelManager implements MetaPixelInterface
 {
-    private string $pixelId;
-    private string $accessToken;
-
-    public function __construct(string $pixelId, string $accessToken, private readonly ?MessageBusInterface $bus = null, private readonly ?LoggerInterface $logger = null,
+    public function __construct(string $accessToken, private readonly string $pixelId, private readonly ?MessageBusInterface $bus = null, private readonly ?LoggerInterface $logger = null,
     )
     {
-        $this->pixelId = $pixelId;
-        $this->accessToken = $accessToken;
-
-        Api::init(null, null, $this->accessToken);
+        Api::init(null, null, $accessToken);
     }
 
-    public function getPixelId(): string
+    public function setAccessToken(string $accessToken): self
     {
-        return $this->pixelId;
-    }
-
-    public function setCredentials(string $pixelId, ?string $accessToken = null): self
-    {
-        $this->pixelId = $pixelId;
-        $this->accessToken = $accessToken ?: $this->accessToken;
-        Api::init(null, null, $this->accessToken);
+        Api::init(null, null, $accessToken);
 
         return $this;
     }
@@ -58,7 +45,7 @@ final class MetaPixelManager implements MetaPixelInterface
         $facebookEvent = $event->toEvent();
 
         $this->logger?->info('Sending', [
-            'meta_pixel_id' => $this->pixelId,
+            'meta_pixel_id' => $event->getPixelId(),
             'event_id' => $facebookEvent->getEventId(),
             'event_name' => $facebookEvent->getEventName(),
             'action_source' => $facebookEvent->getActionSource(),
@@ -67,7 +54,7 @@ final class MetaPixelManager implements MetaPixelInterface
         ]);
 
 
-        $request = (new EventRequest($this->pixelId))
+        $request = new EventRequest($event->getPixelId() ?: $this->pixelId)
             ->setEvents([$facebookEvent]);
 
         try {

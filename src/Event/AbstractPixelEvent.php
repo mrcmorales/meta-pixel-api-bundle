@@ -15,13 +15,19 @@ abstract class AbstractPixelEvent implements EventInterface
         private readonly string $url,
         private readonly ?CustomData $customData = null,
         private readonly ?string $eventId = null,
-        private readonly ?string $actionSource = null,
-        private readonly array $extra = []
+        private readonly ?string $actionSource = ActionSource::WEBSITE->value,
+        private readonly ?string $pixelId = null,
+        private readonly array $extra = [],
     ) {}
 
     public function getExtra(): array
     {
         return $this->extra;
+    }
+
+    public function getPixelId(): ?string
+    {
+        return $this->pixelId;
     }
 
     public function toEvent(): Event
@@ -33,6 +39,6 @@ abstract class AbstractPixelEvent implements EventInterface
             ->setUserData($this->userData)
             ->setCustomData($this->customData)
             ->setEventSourceUrl($this->url)
-            ->setActionSource($this->actionSource ?? ActionSource::WEBSITE->value);
+            ->setActionSource($this->actionSource);
     }
 }

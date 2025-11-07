@@ -9,7 +9,5 @@ use MrcMorales\MetaPixelApiBundle\Event\EventInterface;
 interface MetaPixelInterface
 {
     public function track(EventInterface $event): void;
-    public function getPixelId(): string;
-
-    public function setCredentials(string $pixelId, ?string $accessToken = null): self;
+    public function setAccessToken(string $accessToken): self;
 }

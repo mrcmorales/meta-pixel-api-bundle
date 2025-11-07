@@ -23,8 +23,8 @@ class MetaPixelApiExtension extends Extension
         $definition = $container->register(MetaPixelManager::class, MetaPixelManager::class);
         $definition
             ->setArguments([
-                $config['pixel_id'],
                 $config['access_token'],
+                $config['pixel_id'],
                 new Reference('messenger.default_bus', ContainerBuilder::IGNORE_ON_INVALID_REFERENCE),
                 new Reference('monolog.logger.meta_pixel', ContainerBuilder::IGNORE_ON_INVALID_REFERENCE),
             ])

@@ -44,8 +44,10 @@ final class MetaPixelManager implements MetaPixelInterface
     {
         $facebookEvent = $event->toEvent();
 
+        $pixelId = $event->getPixelId() ?: $this->pixelId;
+
         $this->logger?->info('Sending', [
-            'meta_pixel_id' => $event->getPixelId(),
+            'meta_pixel_id' => $pixelId,
             'event_id' => $facebookEvent->getEventId(),
             'event_name' => $facebookEvent->getEventName(),
             'action_source' => $facebookEvent->getActionSource(),
@@ -54,7 +56,8 @@ final class MetaPixelManager implements MetaPixelInterface
         ]);
 
 
-        $request = new EventRequest($event->getPixelId() ?: $this->pixelId)
+
+        $request = new EventRequest($pixelId)
             ->setEvents([$facebookEvent]);
 
         try {
@@ -70,7 +73,7 @@ final class MetaPixelManager implements MetaPixelInterface
         } catch (Exception $e) {
 
             $this->logger?->error('Error', [
-                'meta_pixel_id' => $this->pixelId,
+                'meta_pixel_id' => $pixelId,
                 'event_id' => $facebookEvent->getEventId(),
                 'event_name' => $facebookEvent->getEventName(),
                 'action_source' => $facebookEvent->getActionSource(),

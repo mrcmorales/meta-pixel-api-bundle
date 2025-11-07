@@ -28,6 +28,11 @@ final class MetaPixelManager implements MetaPixelInterface
         return $this;
     }
 
+    public function getPixelId(): string
+    {
+        return $this->pixelId;
+    }
+
     public function track(EventInterface $event): void
     {
 

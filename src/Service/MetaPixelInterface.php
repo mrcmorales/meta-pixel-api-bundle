@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MrcMorales\MetaPixelApiBundle\Service;
 
-use MrcMorales\MetaPixelApiBundle\Event\EventInterface;
+use MrcMorales\MetaPixelApiBundle\Event\Interface\EventInterface;
 
 interface MetaPixelInterface
 {

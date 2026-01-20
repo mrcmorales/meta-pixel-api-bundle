@@ -17,6 +17,9 @@ final class UserDataFactory
      * @param string|null $firstName
      * @param string|null $lastName
      * @param string|null $dateOfBirth format YYYYMMDD
+     * @param string|null $city
+     * @param string|null $countryCode
+     * @param string|null $zipCode
      *
      * @return UserData
      */
@@ -35,19 +38,19 @@ final class UserDataFactory
         $userData->setFbc($paramBuilder->getFbc());
 
         if ($email) {
-            $userData->setEmail(hash('sha256', strtolower(trim($email))));
+            $userData->setEmail(strtolower(trim($email)));
         }
 
         if ($phone) {
-            $userData->setPhone(hash('sha256', preg_replace('/\D/', '', $phone)));
+            $userData->setPhone(preg_replace('/\D/', '', $phone));
         }
 
         if ($firstName) {
-            $userData->setFirstName(hash('sha256', strtolower(trim($firstName))));
+            $userData->setFirstName(strtolower(trim($firstName)));
         }
 
         if ($lastName) {
-            $userData->setLastName(hash('sha256', strtolower(trim($lastName))));
+            $userData->setLastName(strtolower(trim($lastName)));
         }
 
         if ($dateOfBirth) {
@@ -64,19 +67,19 @@ final class UserDataFactory
                 throw new \InvalidArgumentException('dateOfBirth is not a valid date.');
             }
 
-            $userData->setDateOfBirth(hash('sha256', strtolower(trim($dateOfBirth))));
+            $userData->setDateOfBirth(trim($dateOfBirth));
         }
 
         if ($city) {
-            $userData->setCity(hash('sha256', strtolower(trim($city))));
+            $userData->setCity(strtolower(trim($city)));
         }
 
         if ($countryCode) {
-            $userData->setCountryCode(hash('sha256', strtolower(trim($countryCode))));
+            $userData->setCountryCode(strtolower(trim($countryCode)));
         }
 
         if ($zipCode) {
-            $userData->setZipCode(hash('sha256', strtolower(trim($zipCode))));
+            $userData->setZipCode(strtolower(trim($zipCode)));
         }
 
         $userData->setClientIpAddress($request->getClientIp());

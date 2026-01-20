@@ -8,7 +8,7 @@ use Exception;
 use FacebookAds\Api;
 use FacebookAds\Object\ServerSide\EventRequest;
 use FacebookAds\Object\ServerSide\EventResponse;
-use MrcMorales\MetaPixelApiBundle\Event\EventInterface;
+use MrcMorales\MetaPixelApiBundle\Event\Interface\EventInterface;
 use MrcMorales\MetaPixelApiBundle\Message\MetaPixelEvent;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\MessageBusInterface;

@@ -18,7 +18,7 @@ final class MetaPixelManager implements MetaPixelInterface
     public function __construct(string $accessToken, private readonly string $pixelId, private readonly ?MessageBusInterface $bus = null, private readonly ?LoggerInterface $logger = null,
     )
     {
-        Api::init(null, null, $accessToken);
+        Api::init(null, null, $accessToken, false);
     }
 
     public function setAccessToken(string $accessToken): self

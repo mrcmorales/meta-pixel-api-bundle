@@ -23,7 +23,7 @@ final class MetaPixelManager implements MetaPixelInterface
 
     public function setAccessToken(string $accessToken): self
     {
-        Api::init(null, null, $accessToken);
+        Api::init(null, null, $accessToken, false);
 
         return $this;
     }

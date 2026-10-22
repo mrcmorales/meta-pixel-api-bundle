@@ -31,7 +31,7 @@
     "symfony/dependency-injection": "^6.0 || ^7.0 || 8.0",
     "symfony/http-kernel": "^6.0 || ^7.0 || 8.0",
     "symfony/messenger": "^7.3 || 8.0",
-    "symfony/monolog-bundle": "^3.10"
+    "symfony/monolog-bundle": "^3.10 || ^4.0"
   },
   "suggest": {
     "symfony/messenger": "Allows sending events asynchronously using Symfony Messenger."
